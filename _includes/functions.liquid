@@ -1,0 +1,11 @@
+
+<!-----------------------------------------------------------------------
+    These functions allow the pages under relative versions to reference 
+    pages within their version using an absolute URL instead of a relative URL
+  ----------------------------------------------------------------------->
+
+<!-- pulls the first token from the url, which should be the version number -->
+{% assign version = page.url | replace_first:'/','' | split: "/" | first %}
+
+<!-- converts the version number to an absolute URL -->
+{% capture version_url %}{{ version | absolute_url }}{% endcapture %}
