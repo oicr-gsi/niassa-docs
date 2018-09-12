@@ -218,7 +218,7 @@ attach a workflow run into the existing hierarchy.
 
 You can find a list of the 
 metatypes (like `chemical/seq-na-text-gzip` or `text/plain` above) at 
-[Workflow Conventions]({{version_url}}/workflows/workflow-conventions).
+[Workflow Conventions]({{version_url}}/workflows/conventions).
 
 ## Listing Available Workflows and Their Parameters
 

@@ -3,6 +3,7 @@ layout: page
 title: Workflow Conventions
 nav: false
 ---
+{% include functions.liquid %}
 
 In order for Niassa Pipeline workflows to work well within complex workflows we need to agree on some conventions.
 

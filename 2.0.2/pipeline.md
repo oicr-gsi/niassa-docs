@@ -10,8 +10,9 @@ project. This provides the core functionality of Niassa; it is workflow
 developer environment and a series of tools for installing, running, and
 monitoring workflows.
 
-Since Niassa is a fork and extension of [SeqWare](http://seqware.io), many parts 
-of the system continue to be named SeqWare. Don't panic; this is intentional.
+Since Niassa is a fork and extension of [SeqWare](http://seqware.io), many 
+parts of the system continue to be named SeqWare. Don't panic; this is 
+intentional.
 
 <img src="{{version_url}}/images/pipeline_hpc_oozie.png"/>
 
@@ -21,12 +22,12 @@ workflow engines (oozie, oozie-sge, whitestar, and whitestar-sge).
 Our current recommended combination is
 Java workflows with the Oozie-SGE engine.
 
-* Oozie uses the Hadoop Workflow Scheduler to schedule steps in workflows on the 
-	Hadoop ecosystem (JobTrackers and TaskTrackers). 
+* Oozie uses the Hadoop Workflow Scheduler to schedule steps in workflows on 
+	the Hadoop ecosystem (JobTrackers and TaskTrackers). 
 * Oozie-sge uses Oozie, but in conjunction with a oozie-sge plugin to schedule 
 	steps in workflows on a pre-existing sge cluster. 
-* WhiteStar is a synchronous workflow engine used by Niassa developers to debug, 
-	it runs steps locally via Bash. 
+* WhiteStar is a synchronous workflow engine used by Niassa developers to 
+	debug. It runs steps locally via Bash. 
 * WhiteStar-sge runs steps on a local sge cluster.     
 
 ## Features
@@ -56,8 +57,8 @@ Niassa requires a number of configuration options set in its environment. Find t
 * [User Settings]({{version_url}}/environment/user-configuration)
 : Configuring .seqware/settings and oozie config files.
 * [User Host Configuration]({{version_url}}/environment/host-user)
-: Setting up the `user` host that automatically monitors and launches workflows
-	and where users can schedule their workflows
+: Setting up the `user` host that automatically monitors and launches 
+	workflows	and where users can schedule their workflows
 
 ## Workflows
 
@@ -65,40 +66,27 @@ Workflows consist of an ordered series of calls to command line tools that
 operate on files read from and written to a shared filesystem. Individual steps
 usually run on a cluster node.
 
-* [Java Workflows](/docs/6-pipeline/java-workflows/)
+* [Java Workflows]({{version_url}}/workflows/java-workflows)
 : Java is the workflow language for all workflow development.
-* [Workflow Bundle Conventions](/docs/6-pipeline/workflow_bundles/)
+* [Workflow Bundles]({{version_url}}/workflows/workflow_bundles)
 : We rely on a bundle format for packaging up and exchanging workflows. This
 	document describes the format and directory structure.
-* [Workflow Config Files](/docs/6-pipeline/config_files/)
-: This document describes the ini configuration file used to describe (and type) workflow parameters.
-* [Workflow Metadata File](/docs/6-pipeline/metadata_files/)
-: This document describes the metadata XML file used to describe workflows. It provides workflow names, versions, descriptions, and information for running and testing the workflow.
-* [File Type Conventions](/docs/6-pipeline/file-types/) 
-: This document describes the standardized file meta types (MIME-like types) we use in the project and how to add files to a community-writable file type registration.
+* [Workflow INI Files]({{version_url}}/workflows/ini-files)
+: This document describes the INI configuration file used to describe 
+	workflow parameters.
+* [Workflow Manifest File]({{version_url}}/workflows/manifest)
+: This document describes the XML file manifest used to describe workflows. 
+	It provides workflow names, versions, descriptions, and information for running and testing the workflow.
+* [Workflow Conventions]({{version_url}}/workflows/conventions) 
+: exit codes and metatypes
 
 ## Developer Tutorials
 
-* [Debugging, Troubleshooting, & Restarting Workflow](/docs/6-pipeline/debug-workflows/)
+* [Debugging, Troubleshooting, & Restarting Workflows]({{version_url}}/workflows/debugging-workflows)
 : A guide to debugging, troubleshooting, and restarting failed workflows for the Oozie workflow engine.
 
-* [Developing in Partial Niassa Environments with Whitestar](/docs/6-pipeline/partial_environments/)
+* [Developing in Partial Niassa Environments with Whitestar]({{version_url}}/workflows/partial-environments)
 : A guide to developing without dependencies such as Oozie, SGE/Hadoop, and metadata (via the Niassa webservice).  
-
-## Modules
-
-Modules are really optional for those interested in workflow development since
-most workflows simply refer to command line tools bundled inside the workflow.
-For those interested in extending the underlying Niassa system, Modules
-provide a way to define new step types and could be useful for writing custom
-steps that interact with databases, trigger analysis in other frameworks
-(Pig/Hive/MapReduce), make calls to web services, etc. We use Modules to
-provide core services in Niassa (such as file provisioning and bash shell
-execution). Again, Modules are mainly targeted at core Niassa developers not
-general workflow developers.
-
-* [Writing Modules](/docs/6-pipeline/writing_modules/)
-: How to extend Niassa with Java tool wrappers. Can be used in workflows or as stand-alone utilities that know how to record provenance data back to Niassa MetaDB.
 
 ## Deciders
 
@@ -139,43 +127,45 @@ Other useful tools used for import, export, and annotation of results.
 
 ## Command Line Reference
 
-We have provided a new, simplified command line interface.  The best way to learn its features is to simply add `--help`.
+We have provided a command line interface.  The best way to learn its features is to simply add `--help`.
 
-	$ seqware --help
+```
+$ seqware --help
 
-	Usage: seqware [<flag>]
-	seqware <command> [--help]
+Usage: seqware [<flag>]
+seqware <command> [--help]
 
-	Commands:
-	annotate      Add arbitrary key/value pairs to seqware objects
-	bundle        Interact with a workflow bundle during development/admin
-	copy          Copy files between local and remote file systems
-	create        Create new seqware objects (e.g., study)
-	files         Extract information about workflow output files
-	study         Extract information about studies
-	workflow      Interact with workflows
-	workflow-run  Interact with workflow runs
-	checkdb       Check the seqware database for convention errors
-	check         Check the seqware environment for configuration issues
+Commands:
+annotate      Add arbitrary key/value pairs to seqware objects
+bundle        Interact with a workflow bundle during development/admin
+copy          Copy files between local and remote file systems
+create        Create new seqware objects (e.g., study)
+files         Extract information about workflow output files
+study         Extract information about studies
+workflow      Interact with workflows
+workflow-run  Interact with workflow runs
+checkdb       Check the seqware database for convention errors
+check         Check the seqware environment for configuration issues
 
-	Flags:
-	--help        Print help out
-	--version     Print Seqware's version
+Flags:
+--help        Print help out
+--version     Print Seqware's version
 
 
-	$ seqware workflow --help
+$ seqware workflow --help
 
-	Usage: seqware workflow [--help]
-	       seqware workflow <sub-command> [--help]
+Usage: seqware workflow [--help]
+       seqware workflow <sub-command> [--help]
 
-	Description:
-	  Interact with workflows.
+Description:
+  Interact with workflows.
 
-	Sub-commands:
-	  ini           Generate an ini file for a workflow
-	  list          List all installed workflows
-	  report        List the details of all runs of a given workflow
-	  schedule      Schedule a workflow to be run
+Sub-commands:
+  ini           Generate an ini file for a workflow
+  list          List all installed workflows
+  report        List the details of all runs of a given workflow
+  schedule      Schedule a workflow to be run
+```
 
 Most commands will print the help if no arguments are provided.
 
@@ -183,7 +173,5 @@ The old command line still exists, and its documentation is auto-generated and c
 
 * [Plugins](/docs/17-plugins/)
 : The command line utilities of Niassa.
-* [Modules](/docs/17a-modules/)
-: Can be used as custom steps in workflows or on the command line. The most important modules are the GenericCommandRunner and the ProvisionFiles modules. These are used to call individual Bash steps in workflows and to move input/outputs around respectively.
 
 
