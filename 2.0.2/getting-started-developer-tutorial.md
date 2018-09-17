@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Developer Tutorial
-nav: false
 ---
 {% include functions.liquid %}
 <!-- TODO 

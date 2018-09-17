@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Workflow INI files
-nav: false
+title: Workflow Manifest
 ---
 {% include functions.liquid %}
 

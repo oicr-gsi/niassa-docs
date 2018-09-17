@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Pipeline
-nav: false
+title: User host configuration
 ---
 {% include functions.liquid %}
 

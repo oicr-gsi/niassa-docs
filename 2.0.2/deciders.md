@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Deciders
-nav: false
 ---
 
 So far you've seen how to write a workflow that links together multiple 

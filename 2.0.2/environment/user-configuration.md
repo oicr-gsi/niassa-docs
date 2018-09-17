@@ -1,7 +1,6 @@
 ---
 layout: page
 title: User Configuration
-nav: false
 ---
 
 The SeqWare jar file uses a configuration file that has been set up for

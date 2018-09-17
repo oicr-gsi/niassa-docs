@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Developing in Partial Environments with Whitestar
-nav: false
 ---
 {% include functions.liquid %}
 

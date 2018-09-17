@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Administrator Tutorial
-nav: false
 ---
 {% include functions.liquid %}
 

@@ -1,7 +1,6 @@
 ---
 layout: page
 title: User Tutorial
-nav: false
 ---
 {% include functions.liquid %}
 

@@ -3,11 +3,10 @@ layout: page
 title: Installation
 nav: true
 ---
-
 {% include functions.liquid %}
 
 Niassa is designed to work in a 64-bit Linux environment. Depending on your 
-requirements, there are several ways to run Niassa.
+requirements, there are several ways to install and use Niassa.
 
 ## Option 0 - Client Only
 

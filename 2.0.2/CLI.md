@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Command Line Interface
-nav: false
 ---
 
 This document describes the Niassa Command Line Interface (CLI).
@@ -32,6 +31,8 @@ Flags:
   --metadata    Print metadata environment
 ```
 
+Most commands will print the help if no arguments are provided.
+
 
 <h1>Commands</h1>
 
@@ -56,12 +57,12 @@ Usage: seqware annotate [--help]
 | Parameter  | Description  |
 |---|---|
 | _object_ | A table from the [MetaDB]({{version_url}}/metadb). Permitted: experiment, file, lane, ius, processing, sample, sequencer-run, study, workflow, workflow-run |
-| \--accession <swid>  |  The SWID of the object to annotate. Required. |
-|\--csv <file>  | Bulk annotation from CSV file of: accession, key, value  |
-| \--key <key>   | The identifier of the annotation  |
-| \--reason <text>  | The reason the object is skipped  |
-| \--skip  | Sets the skip attribute flag on the object  |
-| \--val <value>  | The value of the annotation  |
+| `--accession` _swid_  |  The SWID of the object to annotate. Required. |
+|`--csv` _file_  | Bulk annotation from CSV file of: accession, key, value  |
+| `--key` _key_ | The identifier of the annotation  |
+| `--reason` _text_  | The reason the object is skipped  |
+| `--skip`  | Sets the skip attribute flag on the object  |
+| `--val` _value_  | The value of the annotation  |
 
 Objects (tables in the MetaDB):
 
@@ -128,8 +129,8 @@ Objects (tables in the MetaDB):
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the object to display   |
-|\--annotations  | Display only the annotations from the object   |
+|`--accession` _swid_  | The SWID of the object to display   |
+|`--annotations  | Display only the annotations from the object   |
 
 **Examples**
 
@@ -180,11 +181,11 @@ Usage: seqware bundle dry-run [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--dir <bundle-dir>  | The root directory of the bundle  |
-|\--engine <type>  | The engine that will process the workflow run. May be one of: oozie, oozie-sge, whitestar, whitestar-parallel, whitestar-sge. Defaults to the value of SW_DEFAULT_WORKFLOW_ENGINE or 'oozie' if not specified.  |
-|\--ini <ini-file>  | An ini file to configure the workflow run. Repeat this parameter to provide multiple files. Defaults to the value of the 'config' node in metadata.xml  |
-|\--name <wf-name>  | The name of the workflow in the bundle  |
-|\--version <ver>  | The version of the workflow in the bundle  |
+|`--dir` _bundle-dir_  | The root directory of the bundle  |
+|`--engine` _type_  | The engine that will process the workflow run. May be one of: oozie, oozie-sge, whitestar, whitestar-parallel, whitestar-sge. Defaults to the value of SW_DEFAULT_WORKFLOW_ENGINE or 'oozie' if not specified.  |
+|`--ini` _ini-file_  | An ini file to configure the workflow run. Repeat this parameter to provide multiple files. Defaults to the value of the 'config' node in metadata.xml  |
+|`--name` _wf-name_  | The name of the workflow in the bundle  |
+|`--version` _ver_  | The version of the workflow in the bundle  |
 
 
 ## install
@@ -199,7 +200,7 @@ Usage: seqware bundle install [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--zip <bundle-zip>  | The zip file of the bundle  |
+|`--zip` _bundle-zip_  | The zip file of the bundle  |
 
 ## install-dir-only
 Inform the Seqware system of the availability of an unzipped bundle. Installs the workflow in Niassa. After installation, the workflow SWID will be printed to standard out.
@@ -211,7 +212,7 @@ Usage: seqware bundle install-dir-only [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--dir <bundle-dir>  | The directory containing a Niassa workflow |
+|`--dir` _bundle-dir_  | The directory containing a Niassa workflow |
 
 
 ## launch
@@ -224,13 +225,13 @@ Usage: seqware bundle launch [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--dir <bundle-dir>  | The root directory of the bundle  |
-|\--engine <type>  | The engine that will process the workflow run. May be one of: oozie, oozie-sge, whitestar, whitestar-parallel, whitestar-sge. Defaults to the value of SW_DEFAULT_WORKFLOW_ENGINE or 'oozie' if not specified.  |
-|\--ini <ini-file>  | An ini file to configure the workflow run. Repeat this parameter to provide multiple files. Defaults to the value of the 'config' node in metadata.xml  |
-|\--name <wf-name>  | The name of the workflow in the bundle  |
-|\--version <ver>  | The version of the workflow in the bundle  |
-|\--override <key=value>   |  Override specific parameters from the workflow.ini |
-|\--no-metadata  | Run without per-step workflow metadata tracking   |
+|`--dir` _bundle-dir_  | The root directory of the bundle  |
+|`--engine` _type_  | The engine that will process the workflow run. May be one of: oozie, oozie-sge, whitestar, whitestar-parallel, whitestar-sge. Defaults to the value of SW_DEFAULT_WORKFLOW_ENGINE or 'oozie' if not specified.  |
+|`--ini` _ini-file_  | An ini file to configure the workflow run. Repeat this parameter to provide multiple files. Defaults to the value of the 'config' node in metadata.xml  |
+|`--name` _wf-name_  | The name of the workflow in the bundle  |
+|`--version` _ver_  | The version of the workflow in the bundle  |
+|`--override` _key=value` _  Override specific parameters from the workflow.ini |
+|`--no-metadata  | Run without per-step workflow metadata tracking   |
 
 
 ## list
@@ -243,7 +244,7 @@ Usage: seqware bundle list [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--dir <bundle-dir>  | The root directory of the bundle  |
+|`--dir` _bundle-dir_  | The root directory of the bundle  |
 
 ## package
 Package a bundle directory into a zip file
@@ -255,8 +256,8 @@ Usage: seqware bundle package [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--dir <bundle-dir>  | The root directory of the bundle  |
-|\--to <dir>  | The directory to place the zip. Defaults to the current directory  |
+|`--dir` _bundle-dir_  | The root directory of the bundle  |
+|`--to` _dir_  | The directory to place the zip. Defaults to the current directory  |
 
 # copy 
 Convenience tool to copy files between local and remote file systems, e.g. S3. If destination is a local directory, the input file's name will be used for the output file.
@@ -277,7 +278,7 @@ Usage: seqware create [--help]
 
 ## experiment
 
-Create an experiment in the MetaDB. Note: run with \--interactive to see what the controlled vocabulary is in your database.
+Create an experiment in the MetaDB. Note: run with `--interactive` to see what the controlled vocabulary is in your database.
 
 ```
 Usage: seqware create experiment [--help]
@@ -287,10 +288,10 @@ Usage: seqware create experiment [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--description <val>  |   |
-|\--platform-id <val>  |  Dynamic-valued column |
-|\--study-accession <val>  |   |
-|\--title <val>  |   |
+|`--description` _val_  |   |
+|`--platform-id` _val_  |  Dynamic-valued column |
+|`--study-accession` _val_  |   |
+|`--title` _val_  |   |
 
 ## file
 
@@ -313,12 +314,12 @@ Usage: seqware create ius [--help]
 
 | Parameter  |
 |---|---|
-|\--barcode <val>  |
-|\--description <val>  |
-|\--lane-accession <val>  |
-|\--name <val>  |
-|\--sample-accession <val>  |
-|\--skip <val> |
+|`--barcode` _val_  |
+|`--description` _val_  |
+|`--lane-accession` _val_  |
+|`--name` _val_  |
+|`--sample-accession` _val_  |
+|`--skip` _val_ |
 
 ## ius-lims-key
 
@@ -330,14 +331,14 @@ Usage: seqware create ius-lims-key --help
 
 | Parameter  | Description  |
 |---|---|
-|\--provider <val>  |   |
-|\--id <val>  |   |
-|\--version <val>  |   |
-|\--last-modified <val>  |   |
+|`--provider` _val_  |   |
+|`--id` _val_  |   |
+|`--version` _val_  |   |
+|`--last-modified` _val_  |   |
 
 ## lane
 
-Create a lane in the MetaDB. Note: run with \--interactive to see what the controlled vocabulary is in your database.
+Create a lane in the MetaDB. Note: run with `--interactive` to see what the controlled vocabulary is in your database.
 
 ```
 Usage: seqware create lane [--help]
@@ -347,21 +348,21 @@ Usage: seqware create lane [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--cycle-descriptor <val>  |   |
-|\--description <val>  |   |
-|\--lane-number <val>  |   |
-|\--library-selection-accession <val>  |  Dynamic-valued field  |
-|\--library-source-accession <val>  |   Dynamic-valued field |
-|\--library-strategy-accession <val>  |  Dynamic-valued field  |
-|\--name <val>  |   |
-|\--sequencer-run-accession <val>  |   |
-|\--skip <val>  |   |
-|\--study-type-accession <val>  | Dynamic-valued field  |
+|`--cycle-descriptor` _val_  |   |
+|`--description` _val_  |   |
+|`--lane-number` _val_  |   |
+|`--library-selection-accession` _val_  |  Dynamic-valued field  |
+|`--library-source-accession` _val_  |   Dynamic-valued field |
+|`--library-strategy-accession` _val_  |  Dynamic-valued field  |
+|`--name` _val_  |   |
+|`--sequencer-run-accession` _val_  |   |
+|`--skip` _val_  |   |
+|`--study-type-accession` _val_  | Dynamic-valued field  |
 
 
 ## sample
 
-Create a sample in the MetaDB. Note: run with \--interactive to see what the controlled vocabulary is in your database.
+Create a sample in the MetaDB. Note: run with `--interactive` to see what the controlled vocabulary is in your database.
 
 ```
 Usage: seqware create sample [--help]
@@ -372,14 +373,14 @@ Usage: seqware create sample [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--description <val>  |   |
-|\--experiment-accession <val>  |   |
-|\--organism-id <val>  | Dynamic-valued field  |
-|\--title <val>  |   |
+|`--description` _val_  |   |
+|`--experiment-accession` _val_  |   |
+|`--organism-id` _val_  | Dynamic-valued field  |
+|`--title` _val_  |   |
 
 ## sequencer-run
 
-Create a sequencer run in the MetaDB. Note: run with \--interactive to see what the controlled vocabulary is in your database.
+Create a sequencer run in the MetaDB. Note: run with `--interactive` to see what the controlled vocabulary is in your database.
 
 ```
 Usage: seqware create sequencer-run [--help]
@@ -389,15 +390,15 @@ Usage: seqware create sequencer-run [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--description <val>  |   |
-|\--file-path <val>  |   |
-|\--paired-end <val>  |   |
-|\--platform-accession <val>  | Dynamic-valued field  |
-|\--skip <val>  |   |
+|`--description` _val_  |   |
+|`--file-path` _val_  |   |
+|`--paired-end` _val_  |   |
+|`--platform-accession` _val_  | Dynamic-valued field  |
+|`--skip` _val_  |   |
 
 ## study
 
-Create a study in the MetaDB. Note: run with \--interactive to see what the controlled vocabulary is in your database.
+Create a study in the MetaDB. Note: run with `--interactive` to see what the controlled vocabulary is in your database.
 
 ```
 Usage: seqware create study [--help]
@@ -407,16 +408,16 @@ Usage: seqware create study [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <val>  |   |
-|\--center-name <val>  |   |
-|\--center-project-name <val>  |   |
-|\--description <val>  |   |
-|\--study-type <val>  |  Dynamic-valued field |
-|\--title <val>  |   |
+|`--accession` _val_  |   |
+|`--center-name` _val_  |   |
+|`--center-project-name` _val_  |   |
+|`--description` _val_  |   |
+|`--study-type` _val_  |  Dynamic-valued field |
+|`--title` _val_  |   |
 
 ## workflow
 
-Create a workflow in the MetaDB. Note: run with \--interactive to see what the controlled vocabulary is in your database.
+Create a workflow in the MetaDB. Note: run with `--interactive` to see what the controlled vocabulary is in your database.
 
 ```
 Usage: seqware create workflow [--help]
@@ -428,13 +429,13 @@ Usage: seqware create workflow [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--name <val>  |   |
-|\--version <val>  |   |
-|\--description <val>  |   |
+|`--name` _val_  |   |
+|`--version` _val_  |   |
+|`--description` _val_  |   |
 
 ## workflow-run
 
-Create a workflow run in the MetaDB. Note: run with \--interactive to see what the controlled vocabulary is in your database.
+Create a workflow run in the MetaDB. Note: run with `--interactive` to see what the controlled vocabulary is in your database.
 
 ```
 Usage: seqware create workflow-run [--help]
@@ -444,10 +445,10 @@ Usage: seqware create workflow-run [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--workflow-accession <val>  | The SWID of a parent to the workflow run  |
-|\--parent-accession <swid>  | Repeat this parameter to provide multiple parents  |
-|\--file <type::meta-type::path>  | Add (output) files as a part of the workflow run. Repeat this parameter to add multiple files  |
-|\--input-file <swid>  | Add (input) files as a part of the workflow run. Repeat this parameter to add multiple files.  |
+|`--workflow-accession` _val_  | The SWID of a parent to the workflow run  |
+|`--parent-accession` _swid_  | Repeat this parameter to provide multiple parents  |
+|`--file` _type::meta-type::path_  | Add (output) files as a part of the workflow run. Repeat this parameter to add multiple files  |
+|`--input-file` _swid_  | Add (input) files as a part of the workflow run. Repeat this parameter to add multiple files.  |
 
 # files
 Extract information about workflow output files.
@@ -467,18 +468,18 @@ Usage: seqware files report --help
 
 | Parameter  | Description  |
 |---|---|
-|\--out <file>  | The name of the output file  |
-|\--lane-SWID <value>  | Limit files to the specified Lane sw_accession. Can occur multiple times.  |
-|\--ius-SWID <value>  | Limit files to the specified IUS sw_accession. Can occur multiple times.  |
-|\--study-name <value>  | Limit files to the specified Full study name. Can occur multiple times.  |
-|\--sample-name <value>  | Limit files to the specified Full sample name. Can occur multiple times.  |
-|\--root-sample-name <value>  |  Limit files to the specified Full root sample name. Can occur multiple times. |
-|\--sequencer-run-name <value>  |  Limit files to the specified Full sequencer run name. Can occur multiple times. |
-|\--organism <value>  | Limit files to the specified organism id. Can occur multiple times.  |
-|\--workflow-run-status <value>  | Limit files to the specified Workflow run status. Can occur multiple times.  |
-|\--processing-status <value>  | Limit files to the specified Processing status. Can occur multiple times.  |
-|\--processing-SWID <value>  |  Limit files to the specified processing sw_accession. Can occur multiple times. |
-|\--lane-name <value>  |  Limit files to the specified Full lane name. Can occur multiple times. |
+|`--out` _file_  | The name of the output file  |
+|`--lane-SWID` _value_  | Limit files to the specified Lane sw_accession. Can occur multiple times.  |
+|`--ius-SWID` _value_  | Limit files to the specified IUS sw_accession. Can occur multiple times.  |
+|`--study-name` _value_  | Limit files to the specified Full study name. Can occur multiple times.  |
+|`--sample-name` _value_  | Limit files to the specified Full sample name. Can occur multiple times.  |
+|`--root-sample-name` _value_  |  Limit files to the specified Full root sample name. Can occur multiple times. |
+|`--sequencer-run-name` _value_  |  Limit files to the specified Full sequencer run name. Can occur multiple times. |
+|`--organism` _value_  | Limit files to the specified organism id. Can occur multiple times.  |
+|`--workflow-run-status` _value_  | Limit files to the specified Workflow run status. Can occur multiple times.  |
+|`--processing-status` _value_  | Limit files to the specified Processing status. Can occur multiple times.  |
+|`--processing-SWID` _value_  |  Limit files to the specified processing sw_accession. Can occur multiple times. |
+|`--lane-name` _value_  |  Limit files to the specified Full lane name. Can occur multiple times. |
 
 
 ## refresh
@@ -511,7 +512,7 @@ Usage: seqware study list --help
 
 | Parameter  | Description  |
 |---|---|
-|\--tsv  | Emit a tab-separated values list  |
+|`--tsv  | Emit a tab-separated values list  |
 
 # workflow
 Interact with workflows.
@@ -531,8 +532,8 @@ Usage: seqware workflow ini --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the workflow  |
-|\--out <file>  |  Where to write the file (defaults to 'workflow.ini') |
+|`--accession` _swid_  | The SWID of the workflow  |
+|`--out` _file_  |  Where to write the file (defaults to 'workflow.ini') |
 
 
 ## list
@@ -545,7 +546,7 @@ Usage: seqware workflow list --help
 
 | Parameter  | Description  |
 |---|---|
-|\--tsv  | Emit a tab-separated values list  |
+|`--tsv  | Emit a tab-separated values list  |
 
 ## report
 List the details of all runs of a given workflow.
@@ -558,11 +559,11 @@ Usage: seqware workflow report --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the workflow  |
-|\--status <status>  | One of [submitted, pending, running, failed, completed, submitted_cancel, cancelled, submitted_retry]  |
-|\--out <file>  |  The name of the report file |
-|\--tsv  | Emit a tab-separated values report  |
-|\--when <date>  | The date or date-range of runs to include. If omitted, all runs included. Dates are in the form YYYY-MM-DD. Date ranges are in the form YYYY-MM-DD:YYYY-MM-DD  |
+|`--accession` _swid_  | The SWID of the workflow  |
+|`--status` _status_  | One of [submitted, pending, running, failed, completed, submitted_cancel, cancelled, submitted_retry]  |
+|`--out` _file_  |  The name of the report file |
+|`--tsv  | Emit a tab-separated values report  |
+|`--when` _date_  | The date or date-range of runs to include. If omitted, all runs included. Dates are in the form YYYY-MM-DD. Date ranges are in the form YYYY-MM-DD:YYYY-MM-DD  |
 
 ## schedule
 Schedule a workflow to be run.
@@ -575,13 +576,13 @@ Usage: seqware workflow schedule [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the workflow to be run  |
-|\--host <host>  | The host on which to launch the workflow run  |
-|\--engine <type>  | The engine that will process the workflow run. May be one of: oozie, oozie-sge, whitestar, whitestar-parallel, whitestar-sge. Defaults to the value of SW_DEFAULT_WORKFLOW_ENGINE or 'oozie' if not specified.  |
-|\--parent-accession <swid>  | The SWID of a parent to the workflow run. Repeat this parameter to provide multiple parents  |
-|\--override <key=value>  | Override specific parameters from the workflow.ini  |
-|\--ini <ini-file>  | An ini file to configure the workflow run. Repeat this parameter to provide multiple files  |
-|\--input-file <input-file>  | Track input files to workflow runs. Repeat this parameter to provide multiple files   |
+|`--accession` _swid_  | The SWID of the workflow to be run  |
+|`--host` _host_  | The host on which to launch the workflow run  |
+|`--engine` _type_  | The engine that will process the workflow run. May be one of: oozie, oozie-sge, whitestar, whitestar-parallel, whitestar-sge. Defaults to the value of SW_DEFAULT_WORKFLOW_ENGINE or 'oozie' if not specified.  |
+|`--parent-accession` _swid_  | The SWID of a parent to the workflow run. Repeat this parameter to provide multiple parents  |
+|`--override` _key=value_  | Override specific parameters from the workflow.ini  |
+|`--ini` _ini-file_  | An ini file to configure the workflow run. Repeat this parameter to provide multiple files  |
+|`--input-file` _input-file_  | Track input files to workflow runs. Repeat this parameter to provide multiple files   |
 
 # workflow-run
 
@@ -602,7 +603,7 @@ Usage: seqware workflow-run cancel --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  |  The SWID of the workflow run, comma separated (no-spaces) for multiple SWIDs |
+|`--accession` _swid_  |  The SWID of the workflow run, comma separated (no-spaces) for multiple SWIDs |
 
 
 ## launch-scheduled
@@ -615,8 +616,8 @@ Usage: seqware workflow-run launch-scheduled --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | Launch the specified workflow-run. Repeat this to provide multiple runs.  |
-|\--host <value>  | Use the specified value instead of the local when selecting which workflow-runs to launch.  |
+|`--accession` _swid_  | Launch the specified workflow-run. Repeat this to provide multiple runs.  |
+|`--host` _value_  | Use the specified value instead of the local when selecting which workflow-runs to launch.  |
 
 ## propagate-statuses
 Propagate workflow engine statuses to seqware meta DB
@@ -628,9 +629,9 @@ Usage: seqware workflow-run propagate-statuses --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | Propagate the status of the specified workflow-run. Repeat this parameter to specify multiple workflow-runs.  |
-|\--host <value>  | Use the specified value instead of the local hostname when selecting which workflow-runs to check.  |
-|\--threads <num>  | The number of concurrent worker threads (default 1)  |
+|`--accession` _swid_  | Propagate the status of the specified workflow-run. Repeat this parameter to specify multiple workflow-runs.  |
+|`--host` _value_  | Use the specified value instead of the local hostname when selecting which workflow-runs to check.  |
+|`--threads` _num_  | The number of concurrent worker threads (default 1)  |
 
 ## retry
 Retry a failed or cancelled workflow run, skipping completed steps
@@ -644,7 +645,7 @@ Usage: seqware workflow-run retry --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid> | The SWID of the workflow run, comma separated (no-spaces) for multiple SWIDs  |
+|`--accession` _swid_ | The SWID of the workflow run, comma separated (no-spaces) for multiple SWIDs  |
 
 ## reschedule
 Reschedule a workflow-run to re-run from scratch as a new run
@@ -656,9 +657,9 @@ Usage: seqware workflow-run reschedule [--help]
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the workflow-run to be rescheduled  |
-|\--host <host>  | The host on which to launch the workflow run  |
-|\--engine <type>  | The engine that will process the workflow run. May be one of: oozie, oozie-sge, whitestar, whitestar-parallel, whitestar-sge. Defaults to the value of SW_DEFAULT_WORKFLOW_ENGINE or 'oozie' if not specified.  |
+|`--accession` _swid_  | The SWID of the workflow-run to be rescheduled  |
+|`--host` _host_  | The host on which to launch the workflow run  |
+|`--engine` _type_  | The engine that will process the workflow run. May be one of: oozie, oozie-sge, whitestar, whitestar-parallel, whitestar-sge. Defaults to the value of SW_DEFAULT_WORKFLOW_ENGINE or 'oozie' if not specified.  |
 
 ## stderr
 Obtain the stderr output of the run
@@ -670,8 +671,8 @@ Usage: seqware workflow-run stderr --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the workflow run  |
-|\--out <file>  |   The name of the file to write the stderr. Defaults to `swid`.err |
+|`--accession` _swid_  | The SWID of the workflow run  |
+|`--out` _file_  |   The name of the file to write the stderr. Defaults to `swid`.err |
 
 ## stdout
 Obtain the stdout output of the run
@@ -684,8 +685,8 @@ Usage: seqware workflow-run stdout --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the workflow run  |
-|\--out <file>  | The name of the file to write the stdout. Defaults to `swid`.out  |
+|`--accession` _swid_  | The SWID of the workflow run  |
+|`--out` _file_  | The name of the file to write the stdout. Defaults to `swid`.out  |
 
 ## report
 The details of a given workflow-run. Generates a tab-separated file containing information about one or more workflow runs. The workflow runs can either be retrieved according to time period, workflow type, or by workflow run accession.
@@ -697,9 +698,9 @@ Usage: seqware workflow-run report --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the workflow run  |
-|\--out <file>  |  The name of the report file |
-|\--tsv  |  Emit a tab-separated values report |
+|`--accession` _swid_  | The SWID of the workflow run  |
+|`--out` _file_  |  The name of the report file |
+|`--tsv  |  Emit a tab-separated values report |
 
 ## watch
 Watch a workflow-run in progress
@@ -711,7 +712,7 @@ Usage: seqware workflow-run watch --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid  | The SWID of the workflow run  |
+|`--accession` _swid  | The SWID of the workflow run  |
 
 ## ini
 Output the effective ini for a workflow run
@@ -723,8 +724,8 @@ Usage: seqware workflow-run ini --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the workflow run  |
-|\--out <file>  |  The name of the ini file |
+|`--accession` _swid_  | The SWID of the workflow run  |
+|`--out` _file_  |  The name of the ini file |
 
 ## delete
 Recursively delete workflow runs based on the SWID of an ancestral sequencer run, lane, or workflow run.
@@ -736,9 +737,9 @@ Usage: seqware workflow-run delete --help
 
 | Parameter  | Description  |
 |---|---|
-|\--accession <swid>  | The SWID of the desired target  |
-|\--key <file>   | Delete workflow runs given a key file containing records to be deleted in one transaction.  |
-|\--out <file>  |  Override the filename for where to write a key file containing records. |
+|`--accession` _swid_  | The SWID of the desired target  |
+|`--key` _file` _ Delete workflow runs given a key file containing records to be deleted in one transaction.  |
+|`--out` _file_  |  Override the filename for where to write a key file containing records. |
 
 # checkdb
 Using a direct database connection, check whether the meta db contains any content that deviates from recommended conventions.
@@ -759,9 +760,9 @@ Usage: seqware check--help
 
 | Parameter  | Description  |
 |---|---|
-|\--help, h, ?  | Provides help message  |
-|\--master, m  |  Include this parameter to test if you are on a master node and not a user one  |
-|\--tutorial, t |  Include this parameter to test by going through the seqware tutorials |
+|`--help, h, ?  | Provides help message  |
+|`--master, m  |  Include this parameter to test if you are on a master node and not a user one  |
+|`--tutorial, t |  Include this parameter to test by going through the seqware tutorials |
 
 # dev
 Advanced commands for debugging and developers.
@@ -781,8 +782,8 @@ Usage: seqware dev map --help
 
 | Parameter  | Description  |
 |---|---|
-|\--engine-id <engine-id>  | Convert from an engine ID (for oozie this is a job ID) to workflow run accession  |
-|\--action-id <sge-id>  |  Convert from an external ID (for oozie-sge this is a SGE ID) to workflow run accession (expensive) |
+|`--engine-id` _engine-id_  | Convert from an engine ID (for oozie this is a job ID) to workflow run accession  |
+|`--action-id` _sge-id_  |  Convert from an external ID (for oozie-sge this is a SGE ID) to workflow run accession (expensive) |
 
 ## files2workflowruns
 Identify workflow runs that used specified files as input for workflow runs
@@ -794,5 +795,5 @@ Usage: seqware dev files2workflowruns --help
 
 | Parameter  | Description  |
 |---|---|
-|\--file <file-swa> | List of files by sw_accession, repeat for multiple files  |
-|\--workflow <workflow-swa>  | List of workflows, repeat for multiple workflows  |
+|`--file` _file-swa_ | List of files by sw_accession, repeat for multiple files  |
+|`--workflow` _workflow-swa_  | List of workflows, repeat for multiple workflows  |

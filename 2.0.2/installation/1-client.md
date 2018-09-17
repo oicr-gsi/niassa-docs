@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Client Installation
-nav: false
 ---
+{% include functions.liquid %}
 
 If you are within an environment that already has Niassa configured and set up
 (hi OICR!), you will only need to configure your environment to interact with 

@@ -1,7 +1,6 @@
 ---
 layout: page
 title: MetaDB
-nav: false
 ---
 {% include functions.liquid %}
 

@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Pipeline
-nav: false
 ---
 {% include functions.liquid %}
 
@@ -11,8 +10,6 @@ project. Niassa is a workflow engine, a Java workflow API, and a series of tools
 {% include figure.html img="images/pipeline_hpc_oozie.png" title="Niassa pipeline diagram" caption="" %}
 
 {% include_relative seqware-note.md %}
-
-
 
 
 ## Features
@@ -33,12 +30,14 @@ Niassa Pipeline has several key features that distinguish it from other open sou
 
 The following document contains links to all reference material for working with Niassa Pipeline. To get started with Niassa, we recommend our [Getting Started]({{version_url}}/getting-started) guides.
 
+A complete [command line interface (CLI)]({{version_url}}/CLI) reference is available.
+
 * TOC
 {:toc}
 
 ## Building and Installing
 
-See [Installation]({{version_url}}/installation)
+See [Installation]({{version_url}}/installation).
 
 ## Environment Configuration 
 
@@ -60,7 +59,7 @@ We currently support four workflow engines: oozie, oozie-sge, whitestar, and whi
 	steps in workflows on a pre-existing sge cluster. 
 * WhiteStar is a synchronous workflow engine used by Niassa developers to 
 	debug. It runs steps locally via Bash. 
-* WhiteStar-sge runs steps on a local sge cluster.     
+* WhiteStar-AGE runs steps on a local Sun Grid Engine (or equivalent) cluster.     
 
 ## Workflows
 
@@ -90,79 +89,18 @@ usually run on a cluster node.
 * [Developing in Partial Niassa Environments with Whitestar]({{version_url}}/workflows/partial-environments)
 : A guide to developing without dependencies such as Oozie, SGE/Hadoop, and metadata (via the Niassa webservice).  
 
-## Deciders
+## Automation
 
-[Deciders]({{version_url}}/deciders) allow for automatic parameterization and calling of workflows in Niassa Pipeline. It allows you to easily encode the parent workflow and file types that, when present, enable a subsequent workflow to be launched. An extensive reference on BasicDecider and OicrDecider classes.
+* [Deciders]({{version_url}}/deciders)
+: Java-based deciders allow for automatic parameterization and calling of workflows in Niassa Pipeline. It allows you to easily encode the parent workflow and file types that, when present, enable a subsequent workflow to be launched. An extensive reference on BasicDecider and OicrDecider classes.
+* Rules-based automation with [Shesmu](https://github.com/oicr-gsi/shesmu)
+: A centralised decision-making system that accepts metadata from [Cerberus](https://github.com/oicr-gsi/cerberus) and other services and uses simplified configuration files to take actions such as launching workflows. 
 
 ## Reporting
 
 A major focus of the Niassa Web Service is providing reporting resources. These are command line tools that are particularly useful for generating reports for Niassa entities such as workflow runs and their outputs.
 
-* `seqware files report`
-: Gives you a view of all files and their position in the database hierarchy from study on down. Note that this does not work properly with LIMS keys.
 * `seqware workflow-run report`
 : The details of a given workflow-run, including the identity and library samples, input and output files from one or more workflow runs.
-
-## Other Tools 
-
-Other useful tools used for import, export, and annotation of results.
-
-* [Database validation](/docs/24-checkdb/)
-: The underlying Niassa MetaDB relies upon a certain number of conventions. This utility allows you to check that these are properly followed.  
-* [Batch Metadata Injector](/docs/19/)
-: The batch metadata injector is a testing/development tool used to create arbitrary metadata for testing workflows. 
-* [Sanity Check](/docs/25-sanity-check-tool/)
-: This tool checks whether a Niassa environment is setup properly. It currently runs for user environments and master environments.
-* [ProcessingDataStructure2Dot](/docs/6-pipeline/processingdatastructure2dot/)
-: This tool converts a section of the processing hierarchy "below" a processing event into a dot file for visualization. 
-
-## Command Line Reference
-
-We have provided a command line interface.  The best way to learn its features is to simply add `--help`.
-
-```
-$ seqware --help
-
-Usage: seqware [<flag>]
-seqware <command> [--help]
-
-Commands:
-annotate      Add arbitrary key/value pairs to seqware objects
-bundle        Interact with a workflow bundle during development/admin
-copy          Copy files between local and remote file systems
-create        Create new seqware objects (e.g., study)
-files         Extract information about workflow output files
-study         Extract information about studies
-workflow      Interact with workflows
-workflow-run  Interact with workflow runs
-checkdb       Check the seqware database for convention errors
-check         Check the seqware environment for configuration issues
-
-Flags:
---help        Print help out
---version     Print Seqware's version
-
-
-$ seqware workflow --help
-
-Usage: seqware workflow [--help]
-       seqware workflow <sub-command> [--help]
-
-Description:
-  Interact with workflows.
-
-Sub-commands:
-  ini           Generate an ini file for a workflow
-  list          List all installed workflows
-  report        List the details of all runs of a given workflow
-  schedule      Schedule a workflow to be run
-```
-
-Most commands will print the help if no arguments are provided.
-
-The old command line still exists, and its documentation is auto-generated and covers the Plugins (which are utility tools used outside of workflows) and Modules (which model custom steps in workflows and know how to integrate with the Niassa MetaDB for metadata writeback).
-
-* [Plugins](/docs/17-plugins/)
-: The command line utilities of Niassa.
-
-
+* File Provenance through Cerberus
+: For practical purposes, we recommend setting up [Cerberus](https://github.com/oicr-gsi/cerberus), which provides as streaming, filterable view of Niassa objects.

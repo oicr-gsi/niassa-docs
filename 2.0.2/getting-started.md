@@ -34,24 +34,15 @@ Please launch your local VM and log in as <kbd>Niassa</kbd> at this time. If
 you do not have a local VM or Amazon instance currently running please see the
 [Installation Guide]({{version_url}}/installation) before following these 
 tutorials.
-We expect users will want to follow these tutorials in the order presented
-below:
 
-## User Tutorial
+## Getting Started Guides
 
-The first step is to follow the 
-[User Tutorial]({{version_url}}/getting-started-user-tutorial) which will 
-explain how you use the Niassa system to launch workflows and analyze data.
+We recommend you follow the guides in the following order: User, Developer, then Admin guides.
 
-## Developer Tutorial
+| <img src="{{ version_url }}/images/genome-capable_ico.png"/> | [Users]({{ version_url }}/getting-started/user-tutorial) | explains how you use the Niassa system to launch workflows and analyze data |
+| <img src="{{ version_url }}/images/open-source_ico.png"/> | [Developers]({{ version_url }}/getting-started/developer-tutorial) | picks up where the User Tutorial left off and shows you how to create new workflows and make those available to other users of the system |
+| <img src="{{ version_url }}/images/cloud-based_ico.png"/> |  [Administrators]({{ version_url }}/getting-started/admin-tutorial) | gives a general overview of how the various Niassa pieces fit together to automate NGS analysis within a large institution like [OICR](http://oicr.on.ca) |
 
-The [Developer Tutorial]({{version_url}}/getting-started-developer-tutorial) 
-picks up where the User Tutorial left off and shows you how to create new 
-workflow bundles and make those available to other users of the system.
+## Further Reading
 
-## Administrator Tutorial
-
-Finally, the last tutorial is the 
-[Admin Tutorial]({{version_url}}/getting-started-admin-tutorial) which gives a 
-general overview of how the various Niassa pieces fit together to automate NGS
-analysis within a large institution like [OICR](http://oicr.on.ca).
+For other tutorials and reference material, check the [Pipeline]({{ version_url }}/pipeline) page.

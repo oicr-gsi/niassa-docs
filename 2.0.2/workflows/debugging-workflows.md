@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Debugging, Troubleshooting, and Restarting Failed Workflows
-nav: false
 ---
 {% include functions.liquid %}
 

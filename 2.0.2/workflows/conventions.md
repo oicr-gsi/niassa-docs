@@ -1,7 +1,6 @@
 ---
-layout: page
+layout : page
 title: Workflow Conventions
-nav: false
 ---
 {% include functions.liquid %}
 

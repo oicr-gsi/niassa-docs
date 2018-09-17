@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Workflow Bundles
-nav: false
 ---
 {% include functions.liquid %}
 
