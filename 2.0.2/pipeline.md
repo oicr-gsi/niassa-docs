@@ -5,52 +5,42 @@ nav: false
 ---
 {% include functions.liquid %}
 
-The Niassa Pipeline sub-project is really the heart of the overall Niassa
-project. This provides the core functionality of Niassa; it is workflow
-developer environment and a series of tools for installing, running, and
-monitoring workflows.
+The Niassa Pipeline sub-project is the heart of the overall Niassa
+project. Niassa is a workflow engine, a Java workflow API, and a series of tools for installing, running, and monitoring workflows.
 
-Since Niassa is a fork and extension of [SeqWare](http://seqware.io), many 
-parts of the system continue to be named SeqWare. Don't panic; this is 
-intentional.
+{% include figure.html img="images/pipeline_hpc_oozie.png" title="Niassa pipeline diagram" caption="" %}
 
-<img src="{{version_url}}/images/pipeline_hpc_oozie.png"/>
+{% include_relative seqware-note.md %}
 
-We currently support one workflow language (Java) and four 
-workflow engines (oozie, oozie-sge, whitestar, and whitestar-sge). 
 
-Our current recommended combination is
-Java workflows with the Oozie-SGE engine.
 
-* Oozie uses the Hadoop Workflow Scheduler to schedule steps in workflows on 
-	the Hadoop ecosystem (JobTrackers and TaskTrackers). 
-* Oozie-sge uses Oozie, but in conjunction with a oozie-sge plugin to schedule 
-	steps in workflows on a pre-existing sge cluster. 
-* WhiteStar is a synchronous workflow engine used by Niassa developers to 
-	debug. It runs steps locally via Bash. 
-* WhiteStar-sge runs steps on a local sge cluster.     
 
 ## Features
 
 Niassa Pipeline has several key features that distinguish it from other open source and private workflow solutions. These include:
 
-* tool-agnostic
 * developer framework focused
+* supports user-created workflows
 * focused on automated analysis
 * includes cluster abstraction
-* supports detailed provenance tracking
-* supports user-created workflows
 * implements a self-contained workflow packaging standard
+* supports detailed provenance tracking
 * includes fault tolerance
 * focuses on meeting workflow needs of big projects (thousands of samples)
 * is open source
 
+# Reference
+
+The following document contains links to all reference material for working with Niassa Pipeline. To get started with Niassa, we recommend our [Getting Started]({{version_url}}/getting-started) guides.
+
+* TOC
+{:toc}
 
 ## Building and Installing
 
 See [Installation]({{version_url}}/installation)
 
-## Reference for configuration 
+## Environment Configuration 
 
 Niassa requires a number of configuration options set in its environment. Find the reference here:
 
@@ -59,6 +49,18 @@ Niassa requires a number of configuration options set in its environment. Find t
 * [User Host Configuration]({{version_url}}/environment/host-user)
 : Setting up the `user` host that automatically monitors and launches 
 	workflows	and where users can schedule their workflows
+
+## Workflow engines
+
+We currently support four workflow engines: oozie, oozie-sge, whitestar, and whitestar-sge. Our current recommended combination is Java workflows with the Oozie-SGE engine.
+
+* Oozie uses the Hadoop Workflow Scheduler to schedule steps in workflows on 
+	the Hadoop ecosystem (JobTrackers and TaskTrackers). 
+* Oozie-sge uses Oozie, but in conjunction with a oozie-sge plugin to schedule 
+	steps in workflows on a pre-existing sge cluster. 
+* WhiteStar is a synchronous workflow engine used by Niassa developers to 
+	debug. It runs steps locally via Bash. 
+* WhiteStar-sge runs steps on a local sge cluster.     
 
 ## Workflows
 
@@ -90,32 +92,21 @@ usually run on a cluster node.
 
 ## Deciders
 
-The Deciders framework allows for the automatic parameterization and calling of workflows in Niassa Pipeline. It allows you to easily encode the parent workflow and file types that, when present, enable a subsequent workflow to be launched.
-
-* [Basic Deciders](/docs/6-pipeline/basic_deciders/)
-: A generic Decider that can be used to launch a workflow using criteria like parent workflow and input file type.
-* [Making a Custom Decider](/docs/6-pipeline/custom_deciders/)
-: How to create a custom decider for your workflow, useful if your logic for running your workflow is more complicated than parent workflow + input file requirements.
+[Deciders]({{version_url}}/deciders) allow for automatic parameterization and calling of workflows in Niassa Pipeline. It allows you to easily encode the parent workflow and file types that, when present, enable a subsequent workflow to be launched. An extensive reference on BasicDecider and OicrDecider classes.
 
 ## Reporting
 
 A major focus of the Niassa Web Service is providing reporting resources. These are command line tools that are particularly useful for generating reports for Niassa entities such as workflow runs and their outputs.
 
 * `seqware files report`
-: Gives you a view of all files and their position in the database hierarchy from study on down
-* [Workflow Run Reporter](/docs/19-workflow-run-reporter/)
-: Find the identity and library samples and input and output files from one or more workflow runs.
+: Gives you a view of all files and their position in the database hierarchy from study on down. Note that this does not work properly with LIMS keys.
+* `seqware workflow-run report`
+: The details of a given workflow-run, including the identity and library samples, input and output files from one or more workflow runs.
 
 ## Other Tools 
 
 Other useful tools used for import, export, and annotation of results.
 
-* [File Import](/docs/22-filelinker/)
-: Import files into the Niassa MetaDB so they can be used as inputs to workflows.
-* [File Export](/docs/6-pipeline/file_export/)
-: Export files that are the outputs from Niassa workflows.
-* [Attribute Annotator](/docs/12-attribute-annotator/)
-: The underlying Niassa MetaDB supports the annotation of entities in the system using flexible key/value pairs. This guide shows you how to annotate entities in the underlying data model using this approach.
 * [Database validation](/docs/24-checkdb/)
 : The underlying Niassa MetaDB relies upon a certain number of conventions. This utility allows you to check that these are properly followed.  
 * [Batch Metadata Injector](/docs/19/)

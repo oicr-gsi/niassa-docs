@@ -22,7 +22,7 @@ and samples, associate an input file with a sample, and then launch a workflow
 to process that file.  These workflows can be complex (they include branching
 and looping) and in future tutorials you will see how to string multiple
 workflows together (output of one as input for the next) using
-[deciders]({{version_url}}/deciders/basic-deciders) for automation.
+[deciders]({{version_url}}/deciders) for automation.
 
 In this tutorial the focus is on creating a workflow of your own based on the
 HelloWorld that comes bundled with the VM.  In theory you could use either a
