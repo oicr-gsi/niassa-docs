@@ -57,17 +57,24 @@ Authorization through the Web Service allows those users to view and change only
 those studies that they have permission to view.
 
 
-## Metadata Resources
+## Niassa Web service API
 
 Operations on the metadata resources are primarily for read-only access of the
 Niassa metadata database. Any PUT or POST operations add only one row to one
-table in the Niassa Metadata database. There are four classifications of
-resources:
+table in the Niassa Metadata database. Queries are added to the URI as query 
+parameters, e.g. /metadata/db/studies?title=PCSI to find all of the studies with
+the title of PCSI. Retrieving a list of all items in a table is plural 
+e.g. /metadata/db/studies. Retrieving a particular table row is singular 
+e.g. /metadata/db/study/63. Additional fields can be shown by adding ?show to the query parameters, 
+e.g. /metadata/db/lanes/1234?show=workflowRun shows the workflow run associated 
+with this lane. 
 
-* [Data](/docs/webservice-api/metadata/db/) - Resources that adds, retrieves or updates one or more rows from a database table.
-* [Reports](/docs/webservice-api/metadata/report/) - Resources that query the state of the Metadata DB and amalgamate information from multiple database tables in order to report on the state of a study, sequencer run, sample, etc. 
-* [Jobs](/docs/webservice-api/metadata/job/) - Resources that cause considerable processing on the server side and include PUT and POST operations.
-* [Experimental](/docs/webservice-api/metadata/x/) - Resources that are in development or in a testing phase.  
+Types of resources:
+* [Data]({{version_url}}/web-service-api/db) - Resources that add, retrieve or 
+  update one or more rows from a database table.
+* [Reports]({{version_url}}/web-service-api/report) - Resources that query the 
+  state of the Metadata DB and amalgamate information from multiple database 
+  tables in order to report on the state of a study, sequencer run, sample, etc. 
 
 ## Pipeline Resources
 
