@@ -5,7 +5,7 @@ title: Command Line Interface
 
 This document describes the Niassa Command Line Interface (CLI).
 
-{% include_relative seqware-note.md %}
+{% include seqware-note.md %}
 
 ```
 Usage: seqware [<flag>]

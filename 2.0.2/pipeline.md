@@ -9,7 +9,7 @@ project. Niassa is a workflow engine, a Java workflow API, and a series of tools
 
 {% include figure.html img="images/pipeline_hpc_oozie.png" title="Niassa pipeline diagram" caption="" %}
 
-{% include_relative seqware-note.md %}
+{% include seqware-note.md %}
 
 
 ## Features
@@ -35,9 +35,6 @@ A complete [command line interface (CLI)]({{version_url}}/CLI) reference is avai
 * TOC
 {:toc}
 
-## Building and Installing
-
-See [Installation]({{version_url}}/installation).
 
 ## Environment Configuration 
 

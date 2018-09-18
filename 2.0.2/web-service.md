@@ -20,11 +20,6 @@ have permission to view.
 * TOC
 {:toc}
 
-## Building and Installing
-
-See [Installation]({{version_url}}/installation).
-
-
 ## Environment Configuration
 For both users and developers, the [User Settings]({{version_url}}/environment/user-configuration)
 file needs to be configured to use the Web service rather than `database` or
@@ -46,7 +41,7 @@ the Web Service. The usernames and passwords are stored in the
 [User Settings]({{version_url}}/environment/user-configuration) file under the
 `SW_REST_USER` and `SW_REST_PASS` properties.
 
-* [Adding a new user]()
+* [Adding a new user]({{version_url}}/web-service/new-user)
 
 
 ## Ways to access the Web Service 
