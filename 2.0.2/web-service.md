@@ -41,7 +41,7 @@ the Web Service. The usernames and passwords are stored in the
 [User Settings]({{version_url}}/environment/user-configuration) file under the
 `SW_REST_USER` and `SW_REST_PASS` properties.
 
-* [Adding a new user]({{version_url}}/web-service/new-user)
+* [Adding a new user]({{version_url}}/admins/new-user)
 
 
 ## Ways to access the Web Service 

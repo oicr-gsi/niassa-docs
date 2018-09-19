@@ -1,25 +1,27 @@
+---
+layout: page
+title: Cron jobs for workflow launching and propagating
+---
+{% include functions.liquid %}
+
 In the Niassa Pipeline system there are two ways to launch workflows. A user
 can use the  `seqware` CLI to directly launch a workflow bundle, or a user can 
 "schedule" a workflow through the web service. Another process (usually a cron) 
-monitors the web service and launches workflows that have been scheduled. On the 
-Niassa VM/AMI this all happens on the same box. 
+monitors the web service and launches workflows that have been scheduled. 
 
-It is possible to have the user scheduling a workflow, the Niassa Web Service, and the workflow launcher for Niassa Pipeline all on separate servers. This 
-latter method for launching workflows is the preferred mechanism, especially in a production environment,
-since it allows the scheduling of workflows and the running to be decoupled
-(different machines, different users, different user roles, etc).
+Decoupling workflow scheduling from the actual launch allows more flexibility in
+where and by whom a workflow is launched. A user can schedule a 
+workflow from anywhere they have access to the Niassa web service with only the 
+[CLI]({{version_url}}/CLI) and an appropriate `.seqware/settings` file.
 
-<img src="{{version_url}}/images/multihost_arch.png"/>
-
-The setup and configuration of the Web Service and user command line tools are
-covered elsewhere.  Here we detail the needed cron jobs running on the Niassa
-Pipeline host (\*-user in the diagram above) that will query the webservice, launch scheduled workflows, and
-monitor their progress.
+Here we detail the needed cron jobs running on the Niassa
+Pipeline host (\*-user) that will query the webservice, 
+launch scheduled workflows, and update their progress.
 
 ## Limitations
 
-The coordination of workflow scheduling and launching happens via the Niassa Web 
-Service.  Each workflow that is
+The coordination of workflow scheduling and launching happens via the Niassa 
+[Web Service]({{version_url}}/web-service).  Each workflow that is
 scheduled by a user is associated with that user's Web Service credentials. In
 order to launch that scheduled workflow, the CLI must connect
 to the Web Service with the same credentials, find the workflow, and then
@@ -70,7 +72,7 @@ be launched on this host. While we normally use a fully qualified hostname,
 any unique string can be used for launching (for example
 on Amazon S3).
 
-## How to Monitor
+## How to Update Workflow Status
 
 Since the engine that executes the workflow is separate from the Niassa MetaDB, 
 a separate process is used to propagate statuses between the workflow engine and 
@@ -82,14 +84,19 @@ $ seqware workflow-run propagate-statuses
 
 Once this is executed, workflow-run reports will reflect the updated status.
 
-### Cron Jobs
+## Cron Jobs
 
-The Niassa VM performs both of the above functions via a cronjob:
+Create a cron job that performs both of these functions frequently on the 
+\*-user host:
 
 ```
 $ crontab -l
 * * * * * /home/niassa/crons/status.cron >> /home/niassa/logs/status.log
+```
 
+This is the script running in the cron:
+
+```
 $ cat /home/niassa/crons/status.cron
 
 #!/bin/bash
@@ -100,6 +107,9 @@ seqware workflow-run launch-scheduled
 seqware workflow-run propagate-statuses --threads 10
 ```
         
-This script runs every minute and uses the first command to launch workflows that have been previously scheduled while the
-second command is used to check the status of launched workflows.
+This script runs every minute and uses the first command to launch workflows 
+that have been previously scheduled while the second command is used to check 
+the status of launched workflows. Note that this command will only launch those
+workflows that have been scheduled with the same `--hostname` as the machine
+where the cron job is running.
 

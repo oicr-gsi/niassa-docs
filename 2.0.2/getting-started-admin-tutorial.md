@@ -15,23 +15,8 @@ tools required to install workflows, monitor workflows globally, and launch
 scheduled jobs. We also cover tools that are required for cancelling workflows
 that have started and restarting workflows.
 
-<!--In the near future, this guide will also include information on how to setup
-Niassa at your site or on the cloud.  It focuses on what you need to do to get
-“real” work done e.g. to run workflows you create on datasets that require
-multiple nodes to analyze the data in a reasonable amount of time.  There are
-basically two approaches for this, connect the VirtualBox VM to a cluster at
-your local site or to launch a full Niassa cluster on EC2 using Starcluster.
-Either of these approaches will leave you with a system that can process large
-amounts of data. This guide assumes you are an IT admin at your site or are
-working with an admin since some of the steps will require “root” privileges.
--->
-
-By the end of these tutorials you will:
-
-* install workflows
-* monitor workflows
-* see how to connect a local VM to a local cluster for running large-scale workflows
-* see how to launch a cluster on Amazon’s cloud for running large-scale workflows
+* TOC
+{:toc}
 
 ## How to Install a Workflow
 
@@ -62,30 +47,11 @@ Bundle Has Been Installed to the MetaDB and Provisioned to /home/niassa/packaged
 
 What happens here is the `Workflow_Bundle_MyHelloWorld_1.0_SeqWare_{{ version }}.zip` copied to your released-bundles directory and unzip'd into your provisioned-bundles directory. The metadata about the workflow is then saved to the database.
 
-# Monitor configuration
+## Cron jobs for workflow launching and propagating
 
-{% include_relative environment/admin-monitor-configuration.md %}
+See [Cron jobs for workflow launching and propagating]({{version_url}}/admins/launching-propagating)
 
 ## See Also
 
-**Note:**
-Before proceeding further, it is worth noting that the Niassa MetaDB should be regularly backed-up. 
-On our deployment, we have a cron script which calls the Files Report and `pg_dump` nightly to do back-up. 
-
-
-As an admin the next steps are to explore the various sub-project guides in
-this documentation.  Also take a look at the 
-[installation guide]({{version_url}}/installation) which provides low-level, technical
-details on how to install the components of the Niassa software stack. 
-
-
-<!--
-## Coming Soon
-
-We are also preparing guides which will walk administrators through
-
-* Hooking up to an SGE cluster (Oozie)
-* Hooking up to an Oozie cluster
-* Hooking up to an LSF cluster
--->
-
+There's a list of references 
+[for Niassa Administrators]({{version_url}}/admins).

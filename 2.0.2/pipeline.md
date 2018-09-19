@@ -5,7 +5,8 @@ title: Pipeline
 {% include functions.liquid %}
 
 The Niassa Pipeline sub-project is the heart of the overall Niassa
-project. Niassa is a workflow engine, a Java workflow API, and a series of tools for installing, running, and monitoring workflows.
+project. Niassa Pipeline is a workflow engine, a Java workflow API, and a series 
+of tools for installing, running, and monitoring workflows.
 
 {% include figure.html img="images/pipeline_hpc_oozie.png" title="Niassa pipeline diagram" caption="" %}
 
