@@ -7,5 +7,5 @@ layout: page
 www-bit: db
 ---
 
-{% include_relative db-template.md summary=page.summary method=page.method uri=page.uri  show=true id=true %}
+{% include_relative resource-template.md summary=page.summary method=page.method uri=page.uri  show=true id=true %}
 
