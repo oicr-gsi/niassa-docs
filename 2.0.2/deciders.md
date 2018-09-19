@@ -2,6 +2,7 @@
 layout: page
 title: Deciders
 ---
+{% include functions.liquid %}
 
 So far you've seen how to write a workflow that links together multiple 
 commands and parameterizes them through an ini file. But the reality of large 

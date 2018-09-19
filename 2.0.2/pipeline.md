@@ -43,9 +43,6 @@ Niassa requires a number of configuration options set in its environment. Find t
 
 * [User Settings]({{version_url}}/environment/user-configuration)
 : Configuring .seqware/settings and oozie config files.
-* [User Host Configuration]({{version_url}}/environment/host-user)
-: Setting up the `user` host that automatically monitors and launches 
-	workflows	and where users can schedule their workflows
 
 ## Workflow engines
 
@@ -67,7 +64,7 @@ usually run on a cluster node.
 
 * [Java Workflows]({{version_url}}/workflows/java-workflows)
 : Java is the workflow language for all workflow development.
-* [Workflow Bundles]({{version_url}}/workflows/workflow_bundles)
+* [Workflow Bundles]({{version_url}}/workflows/workflow-bundles)
 : We rely on a bundle format for packaging up and exchanging workflows. This
 	document describes the format and directory structure.
 * [Workflow INI Files]({{version_url}}/workflows/ini-files)

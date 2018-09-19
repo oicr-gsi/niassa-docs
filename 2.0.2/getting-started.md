@@ -39,9 +39,9 @@ tutorials.
 
 We recommend you follow the guides in the following order: User, Developer, then Admin guides.
 
-| <img src="{{ version_url }}/images/genome-capable_ico.png"/> | [Users]({{ version_url }}/getting-started-user-tutorial) | explains how you use the Niassa system to launch workflows and analyze data |
-| <img src="{{ version_url }}/images/open-source_ico.png"/> | [Developers]({{ version_url }}/getting-started-developer-tutorial) | picks up where the User Tutorial left off and shows you how to create new workflows and make those available to other users of the system |
-| <img src="{{ version_url }}/images/cloud-based_ico.png"/> |  [Administrators]({{ version_url }}/getting-started-admin-tutorial) | gives a general overview of how the various Niassa pieces fit together to automate NGS analysis within a large institution like [OICR](http://oicr.on.ca) |
+| <img src="{{ version_url }}/images/genome-capable_ico.png" alt="User icon"/> | [Users]({{ version_url }}/getting-started-user-tutorial) | explains how you use the Niassa system to launch workflows and analyze data |
+| <img src="{{ version_url }}/images/open-source_ico.png" alt="Developer icon"/> | [Developers]({{ version_url }}/getting-started-developer-tutorial) | picks up where the User Tutorial left off and shows you how to create new workflows and make those available to other users of the system |
+| <img src="{{ version_url }}/images/cloud-based_ico.png" alt="Administrator icon"/> |  [Administrators]({{ version_url }}/getting-started-admin-tutorial) | gives a general overview of how the various Niassa pieces fit together to automate NGS analysis within a large institution like [OICR](http://oicr.on.ca) |
 
 ## Further Reading
 

@@ -52,7 +52,7 @@ schedule a workflow run, the provided settings file includes values needed to
 launch workflow runs and interact with supporting systems. For now, you can
 safely ignore them.
 
-For more information see the [Settings]({{version_url}}/environmetn/user-configuration)
+For more information see the [Settings]({{version_url}}/environment/user-configuration)
 documentation which covers the details on the user config file.
 
 ## Creating Studies, Experiments, and Samples
@@ -346,7 +346,7 @@ carefully for creating a study, experiment, sample, and file in the MetaDB,
 and running a workflow you should have a
 structure very similar to the following present in the MetaDB:
 
-<img src="{{version_url}}/images/sample_workflow_run.png" width="600px"/>
+<img src="{{version_url}}/images/sample_workflow_run.png" width="600px" alt="An example workflow run in the MetaDB"/>
 
 You can see the study, experiment, and sample linked together along with
 a file processing event attached directly to the sample. This
@@ -356,10 +356,10 @@ has three steps in this example and the final step is associated to the
 output file `output.txt`.  The processing event for Step3 could
 then go on to become the parent for a subsequent workflow.
 
-For a more detailed explination of the Niassa MetaDB and the relationships it
+For a more detailed explanation of the Niassa MetaDB and the relationships it
 encodes please see the [MetaDB Documentation]({{version_url}}/metadb). You can use
 reporting tools available in the [Pipeline]({{version_url}}/pipeline) and/or 
-[Web Service](/docs/7-web-service/) to explore the data structures and files 
+[Web Service]({{version_url}}/web-service) to explore the data structures and files 
 created when running workflows.
 
 
@@ -438,12 +438,30 @@ After launching a workflow, you can cancel it in order to stop further execution
 
 ## How to Retry Failed and Cancelled Workflows
 
-<%= render '/includes/debug/oozie_restart/' %>
+If a workflow has failed due to a transient error (such as cluster downtime or a 
+  disk quota being reached), you can restart a workflow at the last failed step.
+
+```
+$ seqware workflow-run retry --accession 28
+```
+
+Alternately, you can retry workflow runs directly in HUE (this will also give 
+more fine-grained control over which jobs should be rerun).  Note that status 
+checking is normally skipped for failed/cancelled runs, thus SeqWare will need 
+to be informed that the run has been retried externally:
+
+```
+$ seqware workflow-run propagate-statuses --accession 28
+```
+
+As with the cancel case, the status is first set to `submitted_retry`, and after 
+the next status propagation will be set to `running` (or whatever status is 
+appropriate).
+
 
 
 ## Next Steps
 
 See the [Developer Tutorial]({{version_url}}/getting-started-developer-tutorial) for
 how to create a new workflow.  How to install workflows and present them to
-users is covered in the [Admin
-Tutorial](/docs/3-getting-started/admin-tutorial/).
+users is covered in the [Admin Tutorial]({{version_url}}/getting-started-admin-tutorial/).

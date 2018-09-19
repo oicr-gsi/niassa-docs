@@ -16,8 +16,7 @@ the system. As long as you have access to the Niassa webservice host and the
 appropriate permissions, you can write new workflows, install those workflows on 
 the remote Niassa system, schedule workflows remotely, etc. 
 
-Most sites do not have Niassa already configured and you will 
-typically need to use other options below.
+[Client Only Set up instructions]({{version_url}}/installation/0-client-only)
 
 
 ## Option 1 - Docker Whitestar (Pipeline only)
@@ -27,9 +26,6 @@ Whitestar is an alternative engine for Niassa that has no metadata writeback, no
 database, no Oozie, and no cluster. It takes your workflow, throws it into a 
 bash script, and executes it locally. Whitestar also uses an older version of 
 SeqWare, the predecessor of Niassa, and so not all functionality may be available.
-
-If your work depends at all on the presence of the cluster, a metaDB, or web
-service, you can't use this technique.
 
 To install and run Docker on your local machine, go to the 
 [download page](https://store.docker.com/search?type=edition&offering=community) 
@@ -43,7 +39,21 @@ Github. Full instructions are given in the README.md file.
 
 This is not a trivial undertaking and should only be attempted by the brave.
 
-Follow the instructions at [Bindle](https://github.com/CloudBindle/Bindle).
+Much of this installation process is site-specific. We have private
+[Ansible playbooks](https://bitbucket.oicr.on.ca/projects/GSI/repos/seqware-infrastructure/browse), 
+[post-Ansible setup guides](https://wiki.oicr.on.ca/display/GSI/Setting+up+a+new+SeqWare+environment) 
+and technical expertise at OICR to perform on-site installations. If you are 
+interested in installing Niassa at your location, please get in touch by 
+[filing an issue on Github](https://github.com/oicr-gsi/niassa/issues) 
+and we will do our best to help.
+
+You may also have luck following the instructions at 
+[Bindle](https://github.com/CloudBindle/Bindle) to install SeqWare instead. Most
+Niassa functions are also available in SeqWare.
+
+Once you have a local installation, follow the 
+[Client Only Set up instructions]({{version_url}}/installation/0-client-only)
+for each new user.
 
 ## Next Steps
 

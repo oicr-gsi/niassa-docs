@@ -6,7 +6,7 @@ title: Workflow Bundles
 
 ## Creating a Java Workflow Bundle
 
-In the [Developer Tutorial](/docs/3-getting-started/developer-tutorial/) you
+In the [Developer Tutorial]({{version_url}}/getting-started-developer-tutorial) you
 saw how to create a MyHelloWorld Java workflow using an archetype.
 
 {% include_relative java-archetype.md %}

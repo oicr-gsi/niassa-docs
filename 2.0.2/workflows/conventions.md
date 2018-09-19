@@ -61,7 +61,7 @@ list before you write a new workflow to see if input/outputs can be annotated
 with one of these metatypes.  Only add to this list if you're certain the  
 metatype does not already exist below.
 
-For a directory of standard metatypes (or metatypes) (you should use a standard one if it exists!) see [here](http://www.feedforall.com/mime-types.htm), [here](http://silk.nih.gov/public/zzyzzap.@www.silk.types.html) and [here](http://www.iana.org/assignments/media-types/index.html).  Wikipedia has more to say [here](http://en.wikipedia.org/wiki/MIME).
+For a directory of standard metatypes (or metatypes) (you should use a standard one if it exists!) see  [here](http://www.iana.org/assignments/media-types/index.html).  Wikipedia has more to say [here](http://en.wikipedia.org/wiki/MIME).
 
 For the current list of metatypes, please see the [current list](https://docs.google.com/spreadsheet/ccc?key=0An-x7dcdlF7AdGhjdjRTU0toZkJXNlNRb1NROXdfLWc).
 If you wish to add a new MIME type, use the form which contributes to this list [here](https://docs.google.com/spreadsheet/viewform?formkey=dGhjdjRTU0toZkJXNlNRb1NROXdfLWc6MQ).

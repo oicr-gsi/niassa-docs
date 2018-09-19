@@ -2,6 +2,7 @@
 layout: page
 title: Command Line Interface
 ---
+{% include functions.liquid %}
 
 This document describes the Niassa Command Line Interface (CLI).
 

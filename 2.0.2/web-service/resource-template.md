@@ -1,6 +1,6 @@
 {% include functions.liquid %}
 
-\> Back to [{{ page.www-bit}}]({{version_url}}/web-service-api/{{page.www-bit}})
+\> Back to [{{ page.www-bit}}]({{version_url}}/web-service/{{page.www-bit}})
 
 {{ include.summary }}
 

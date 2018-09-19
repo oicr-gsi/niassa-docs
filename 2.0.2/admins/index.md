@@ -16,7 +16,7 @@ to have different servers hosting each Niassa component. This allows scheduling
 and running workflows to be decoupled (different machines, different users, 
 different user roles, etc). 
 
-<img src="{{version_url}}/images/multihost_arch.png"/>
+<img src="{{version_url}}/images/multihost_arch.png" alt="Niassa multi-host architecture"/>
 
 In a typical production setup, there are four servers:
 
