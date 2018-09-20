@@ -1,6 +1,23 @@
 ---
 layout: default
 ---
+{% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
+
+<a href="{{ "/" | relative_url }}">Home</a>
+{%- for crumb in crumbs offset: 1 -%}
+  {%- if forloop.last -%}
+> {{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}
+  {%- else -%}
+    {%- assign crumb_limit = forloop.index | plus: 1 -%}
+    {%- capture hurl -%}
+      {%- for crumb in crumbs limit: crumb_limit -%}
+        {{ crumb | append: '/' }}
+      {%- endfor -%}
+    {%- endcapture -%}
+> <a href="{{ hurl | relative_url }}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
+  {% endif %}
+{% endfor %}
+
 <article class="post">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>

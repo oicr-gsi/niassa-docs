@@ -1,5 +1,5 @@
 ---
-title: GET a workflow run report 
+title: GET a workflow run report
 uri: /reports/workflowruns/{workflowRunSWID}
 method: GET
 summary: Retrieves a single workflow run report, including input and output files, using its SeqWare accession.

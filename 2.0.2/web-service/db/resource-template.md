@@ -1,7 +1,5 @@
 {% include functions.liquid %}
 
-\> Back to [{{ page.www-bit}}]({{version_url}}/web-service/{{page.www-bit}})
-
 {{ include.summary }}
 
 ## Resource URL
