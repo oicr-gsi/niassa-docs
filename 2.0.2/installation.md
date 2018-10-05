@@ -16,7 +16,7 @@ the system. As long as you have access to the Niassa webservice host and the
 appropriate permissions, you can write new workflows, install those workflows on 
 the remote Niassa system, schedule workflows remotely, etc. 
 
-[Client Only Set up instructions]({{version_url}}/installation/0-client-only)
+[Client Only Set up instructions]({{version_url}}/installation/client-only)
 
 
 ## Option 1 - Docker Whitestar (Pipeline only)
@@ -39,6 +39,11 @@ Github. Full instructions are given in the README.md file.
 
 This is not a trivial undertaking and should only be attempted by the brave.
 
+* [Build Guide]({{version_url}}/installation/building)
+* [MetaDB Installation Guide]({{version_url}}/installation/metadb)
+* [Web Service Installation Guide]({{version_url}}/installation/web-service)
+
+
 Much of this installation process is site-specific. We have private
 [Ansible playbooks](https://bitbucket.oicr.on.ca/projects/GSI/repos/seqware-infrastructure/browse), 
 [post-Ansible setup guides](https://wiki.oicr.on.ca/display/GSI/Setting+up+a+new+SeqWare+environment) 
@@ -52,7 +57,7 @@ You may also have luck following the instructions at
 Niassa functions are also available in SeqWare.
 
 Once you have a local installation, follow the 
-[Client Only Set up instructions]({{version_url}}/installation/0-client-only)
+[Client Only Set up instructions]({{version_url}}/installation/client-only)
 for each new user.
 
 ## Next Steps
