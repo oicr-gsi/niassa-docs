@@ -4,14 +4,20 @@ title: MetaDB
 ---
 {% include functions.liquid %}
 
-The Niassa MetaDB is a metadatabase modeled on the 
-[Short Read Archive](http://www.ncbi.nlm.nih.gov/Traces/sra) schema and built 
-with [PostgreSQL](http://www.postgresql.org/). It includes tables to model the 
-run of the sequencers, analysis "processing" events, and installed workflows. A
-common database for tracking metadata, used by the other Niassa components.
+The Niassa [MetaDB](https://oicr-gsi.github.io/niassa-docs/current/metadb) is a
+database for tracking metadata (data that describes other data) used by the
+other Niassa components. It serves two primary functions: the 'top half' stores
+information to model the run of sequencing instruments and LIMS information,
+including studies, experiments, samples, lanes and instrument runs; and the
+'bottom half', which stores analysis information like workflows, parameters, and
+result files.
 
-It is not a 100% translation of the SRA data model. There are places where the 
-SRA model provides greater flexibility and places where we changed the model 
+The Niassa MetaDB is modeled on the
+[Short Read Archive](http://www.ncbi.nlm.nih.gov/Traces/sra) schema and built
+with [PostgreSQL](http://www.postgresql.org/). It includes tables to model the
+run of the sequencers, analysis "processing" events, and installed workflows. It
+is not a 100% translation of the SRA data model. There are places where the 
+SRA model provides greater flexibility and places where we changed the model
 for our own purposes.
 
 ## Tables
@@ -42,33 +48,33 @@ The diagram below shows the relationships between these tables.
 
 ### Special tables
 
-The `sample` and `processing` tables are 'special' in that they have linker 
+The `sample` and `processing` tables are 'special' in that they have linker
 tables where they can be parents of other samples/processing events. Navigating
 through these tables in the database requires a considerable amount of recursion.
 
 * only the 'root' of a particular `sample` hierarchy will have a reference to an
 `experiment`, and only the leaf of the `sample` hierarchy will refer to an `ius`.
 * `processing` rows will either have references to the `workflow_run` table in
-the `workflow_run_id` column when it is a root `processing` event. All other 
+the `workflow_run_id` column when it is a root `processing` event. All other
 `processing` events will refer to the `workflow_run` in `ancestor_workflow_run_id`.
 
 The example in the next section will show how this works in practice.
 
 ### Attributes and linker tables
 
-The following is a more complicated database diagram that includes tables used for 
+The following is a more complicated database diagram that includes tables used for
 linking metadata to workflow runs and all attribute tables.
 
 ![Complicated DB]({{version_url}}/images/metadb_complicated.png)
 
-Note there are also attribute tables for each of the above tables (of the form 
-`X_attribute`) which maintain arbitrary key value information that can be used 
-to guide custom behaviour at your particular Niassa site. They can be updated 
+Note there are also attribute tables for each of the above tables (of the form
+`X_attribute`) which maintain arbitrary key value information that can be used
+to guide custom behaviour at your particular Niassa site. They can be updated
 using the `seqware annotate` function in the CLI.
 
-Finally, there are a host of linking tables (of the form processing_X) which 
-maintain information on which steps in your workflow are attributable to what 
-physical entities. 
+Finally, there are a host of linking tables (of the form processing_X) which
+maintain information on which steps in your workflow are attributable to what
+physical entities.
 
 
 ## Structure of a typical workflow run
@@ -76,14 +82,14 @@ physical entities.
 Niassa uses the MetaDB to track processing events and to connect samples to
 processed data and/or to connect one set of processed data to another. For
 example linking between a biological sample, a sequencing run, the generated
-raw sequence data, and downstream processed sequence data is possible. 
-First, an example of the entities that exist in the MetaDB 
+raw sequence data, and downstream processed sequence data is possible.
+First, an example of the entities that exist in the MetaDB
 after a "straightforward" workflow run.
 
 ![Simple DB](/assets/images/metadb/Study_hierarchy.png)
 
 The 'proper' way to traverse the database from a study or sequencer_run is to
-go through ius, processing_ius, and processing. 
+go through ius, processing_ius, and processing.
 So from study:
 
 * traverse through experiment
@@ -106,8 +112,8 @@ find all of the processing events linked with a Study is to traverse through
 the IUS to the root Processing through processing_ius, not through
 ius_workflow_runs.
 
-Just for fun, there are a number of linker tables that will connect other 
+Just for fun, there are a number of linker tables that will connect other
 entities in the top half of the database with `processing`. The only other linker
-table we use at the moment is `processing_lane`, specifically for associating 
-files that are better linked to lane instead of sample (like 
+table we use at the moment is `processing_lane`, specifically for associating
+files that are better linked to lane instead of sample (like
 Undetermined_indices files for bcl2fastq).
