@@ -15,5 +15,5 @@ For more information about each resource and the correct complete URI, please fo
 {% assign wwwrs = site.pages | where: "www-bit", "report" %}
 | Method | URI | Description |
 |--------|-----|-------------|
-{% for pg in wwwrs %} |<a href="{{ pg.url | relative_url }}" alt="{{ pg.title }}">{{ pg.method }}</a> | <a href="{{ pg.url | relative_url}}" alt="{{ pg.title }}">{{ pg.uri }}</a> | {{pg.summary}} | 
+{% for pg in wwwrs %} |<a href="{{ pg.url | absolute_url }}" alt="{{ pg.title }}">{{ pg.method }}</a> | <a href="{{ pg.url | absolute_url}}" alt="{{ pg.title }}">{{ pg.uri }}</a> | {{pg.summary}} | 
 {% endfor %}
