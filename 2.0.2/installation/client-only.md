@@ -27,7 +27,7 @@ etc.
 It is possible that changes to the pipeline or cluster, or a variation in user 
 environment, will cause a step in this tutorial to fail. If that happens, seek 
 help--and 
-[update this page](https://github.com/oicr-gsi/niassa-docs/edit/master/{{version}}/installation/0-client-only.md) 
+[update this page](https://github.com/oicr-gsi/niassa-docs/edit/master/{{version}}/installation/client-only.md) 
 if needed.
 
 This tutorial includes a few workarounds and ad hoc modifications. Future 
