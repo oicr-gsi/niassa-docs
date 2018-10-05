@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  <head>
+    <meta charset="utf-8"/>
+    {% capture new_url %}{{ page.url | replace: "current", site.current_version | absolute_url }}{% endcapture %}
+    <title>Redirecting to {{ new_url }}</title>
+    <meta http-equiv="refresh" content="0; URL={{ new_url }}"/>
+    <link rel="canonical" href="{{ new_url }}"/>
+    <link rel="icon" href=" {{"logo.ico"|relative_url}}"  type="image/x-icon" />
+  </head>
+</html>
