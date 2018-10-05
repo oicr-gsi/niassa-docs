@@ -11,5 +11,5 @@ For more information about each resource and the correct complete URI, please fo
 {% assign wwwdb = site.pages | where: "www-bit", "db" %}
 | Method | URI | Description |
 |--------|-----|-------------|
-{% for pg in wwwdb %} |<a href="{{ pg.url }}" alt="{{ pg.title }}">{{ pg.method }}</a> | <a href="{{ pg.url }}" alt="{{ pg.title }}">{{ pg.uri }}</a> | {{pg.summary}} | 
+{% for pg in wwwdb %} |<a href="{{ pg.url | absolute_url}}" alt="{{ pg.title }}">{{ pg.method }}</a> | <a href="{{ pg.url | absolute_url }}" alt="{{ pg.title }}">{{ pg.uri }}</a> | {{pg.summary}} | 
 {% endfor %}
