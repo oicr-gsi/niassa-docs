@@ -34,8 +34,10 @@ is not set.
 The format for the settings file is based on 
 [Java properties files](http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html#load%28java.io.Reader%29). 
 
-{% include_relative seqware-settings.md %}
-	
+```
+{% include_relative seqware-settings %}
+```
+
 ## Oozie Workflow Engine Configuration
 
 In addition to the the user's ~/.seqware/settings file the only other 

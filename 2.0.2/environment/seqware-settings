@@ -1,4 +1,3 @@
-```
 # SEQWARE PIPELINE SETTINGS
 
 # The settings in this file are tagged by when they are used.
@@ -149,4 +148,3 @@ EXTENDED_TEST_DB_NAME=seqware_meta_db
 EXTENDED_TEST_DB_USER=seqware
 # optional: Used to designate a database password for extended integration tests
 EXTENDED_TEST_DB_PASSWORD=seqware
-```
