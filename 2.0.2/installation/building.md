@@ -19,7 +19,7 @@ title: Build Guide
 Our source code is available from [GitHub](https://github.com/oicr-gsi/niassa) 
 or the "Fork me on GitHub" banner at the upper right of our website
 
-To get a copy of of our source code,
+To get a copy of our source code,
 clone our repository.
 
 ```
@@ -277,7 +277,7 @@ tests:
 1. Set up your environment again from scratch as described above. Replace your 
   `~/.seqware/settings`, `~/.m2/toolchains.xml`, and `~/.mavenrc` files.
 1. Kill the running Docker MetaDB and start it again using the 
-  `.travis/start-postgres.sh` script. Make sure you set your .pgpass and $DB_ENV
+  `.travis/start-postgres.sh` script. Make sure you set your `.pgpass` and `$DB_ENV`
   variables again.
 1. Remove your `~/.m2/repository` and `mvn clean install -DskipTests` to start 
   everything again.
